@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagar Sharma | Portfolio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: rgb(120, 40, 200);
+            --bg-dark: #0a0a0a;
+            --text-light: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            color: var(--text-light);
+            background-color: black;
+        }
+
+        /* HEADER & NAVIGATION */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            line-height: 1.2;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* HAMBURGER MENU */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .cvbtn{
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cvbtn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10% 0px;
+            min-height: 70vh;
+            background-color: rgba(0, 0, 0, 0.96);
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin: 10px 0;
+        }
+
+        .hero-text h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #ccc;
+        }
+
+        .hero-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile{
+            width: 100%;
+            max-width: 370px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+            background: radial-gradient(circle, var(--primary-color), transparent 80%);
+            filter: blur(60px);
+            z-index: 1;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .viewbtn, .contactbtn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .viewbtn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .contactbtn {
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: white;
+        }
+        .contactbtn:hover {
+            background: var(--primary-color);
+        }
+        /* ABOUT SECTION */
+        .about {
+            padding: 80px 10%;
+            background-color: white;
+            color: black;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .readmore{
+         border: 1px solid var(--primary-color);
+            background: transparent;
+           color: var(--primary-color);
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .readmore:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+
+        /* SKILLS SECTION */
+        .skills {
+            padding: 80px 10%;
+            background: #050505;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-column {
+            background: #111;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #222;
+        }
+
+        .skill-column h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .skill-column ul {
+            list-style: none;
+        }
+
+        .skill-column li {
+            margin: 10px 0;
+            color: #bbb;
+        }
+
+        /* PROJECTS SECTION */
+        .projects {
+            padding: 80px 10%;
+            background: #f9f9f9;
+            color: black;
+            text-align: center;
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 148px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            padding: 80px 10%;
+            background: #0a0a0a;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contact-form button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 992px) {
+            .header { padding: 15px 5%; }
+            .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+            .hero-text { margin-bottom: 50px; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: black;
+                width: 100%;
+                text-align: center;
+                transition: 0.4s;
+                padding: 40px 0;
+                border-bottom: 1px solid var(--primary-color);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .about-container { flex-direction: column; text-align: center; }
+            .contact-form .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <span style="color: var(--primary-color);">Sagar</span> Sharma<br>
+            <span style="font-size:11px; font-weight: normal; color: #aaa;">Web Developer</span>
+        </div>
+
+        <nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button type="button" class="cvbtn" onclick="window.location.href='resume.pdf'">Download CV</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-text">
+            <p style="color:var(--primary-color); font-weight: bold;">Hello I'm</p>
+            <h1>Sagar Sharma</h1>
+            <h3>I build Modern <span style="color:var(--primary-color)">Web Experiences</span></h3>
+            <p>I am a passionate web developer with experience in creating high-performance, responsive websites that look great on any device.</p>
+            <div class="btn-group">
+                <button class="viewbtn">View My Work</button>
+                <a href="#contact"><button class="contactbtn">Contact Me</button></a>
+            </div>
+        </div>
+
+        <div class="hero-img">
+            <div class="glow"></div>
+            <img src="myimg.png" class="profile" alt="Sagar Sharma Profile">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h4 style="text-align: center; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px;">About Me</h4>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="aboutme.png" alt="Working">
+            </div>
+            <div class="about-text">
+                <h2>I'm a Web Developer Based in <span style="color: var(--primary-color);">India</span></h2>
+                <p>I focus on writing clean, elegant, and efficient code. With a strong foundation in frontend technologies and data analytics, I bridge the gap between complex data and user-friendly interfaces.</p>
+                <button class="readmore" style="margin-top: 20px;">Read More</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-column">
+                <h3><i class="fas fa-code"></i> Web Dev</h3>
+                <ul>
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>Responsive Design</li>
+                    <li>Bootstrap / Tailwind</li>
+                </ul>
+            </div>
+            <div class="skill-column">
+                <h3><i class="fab fa-python"></i> Python</h3>
+                <ul>
+                    <li>Core Python</li>
+                    <li>OOP Concepts</li>
+                    <li>Web Scraping</li>
+                </ul>
+            </div>
+            <div class="skill-column">
+                <h3><i class="fas fa-chart-bar"></i> Analytics</h3>
+                <ul>
+                    <li>SQL Databases</li>
+                    <li>Power BI</li>
+                    <li>Excel Magic</li>
+                </ul>
+            </div>
+            <div class="skill-column">
+                <h3><i class="fas fa-tools"></i> Libraries</h3>
+                <ul>
+                    <li>NumPy</li>
+                    <li>Pandas</li>
+                    <li>Matplotlib</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2 class="section-title">My Work</h2>
+        <div class="project-container">
+            <div class="project-card">
+                <img src="myportfolio.png" alt="Portfolio">
+                <div class="project-info">
+                    <h4>Personal Portfolio</h4>
+                    <p>Clean and modern personal site.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="ebookstore.jpeg" alt="E-commerce">
+                <div class="project-info">
+                    <h4>E-Commerce App</h4>
+                    <p>React-based shopping experience.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="news.png" alt="News Blog">
+                <div class="project-info">
+                    <h4>News Portal</h4>
+                    <p>Dynamic UI for news delivery.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="goutomweb.png" alt="News Blog">
+                <div class="project-info">
+                    <h4>Portfolio Website</h4>
+                    <p>Dynamic UI Portfolio Website</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 style="font-size: 2.5rem;">Let's <span style="color: var(--primary-color);">Work Together</span></h2>
+                <p>Have a project in mind? Reach out and let's build something amazing.</p>
+                <div style="margin-top: 30px;">
+                    <p><i class="fas fa-envelope"></i> sharmasagarkishan4692@email.com</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-map-marker-alt"></i> India</p>
+                </div>
+            </div>
+
+            <form class="contact-form">
+                <div class="form-row">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <input type="text" placeholder="Subject">
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
